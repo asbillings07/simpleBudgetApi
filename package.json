@@ -11,6 +11,12 @@
   "author": "Aaron Billings",
   "license": "MIT",
   "dependencies": {
+    "apollo-server": "^2.21.1",
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-client": "^2.6.4",
+    "apollo-link-http": "^1.5.16",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
     "dotenv": "^8.2.0",
     "googleapis": "^59.0.0",
     "jwks-rsa": "^1.9.0",

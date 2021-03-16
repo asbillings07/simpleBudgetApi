@@ -12,6 +12,7 @@ const authClientId = process.env.AUTH0_CLIENT_ID
 const authDomain = process.env.AUTH0_DOMAIN
 const authClientSecret = process.env.AUTH0_CLIENT_SECRET
 const sessionSecret = process.env.SESSION_SECRET
+const pay_enum = ['Weekly', 'BiWeekly', 'SemiMonthly', 'Monthly']
 
 module.exports = {
   sessionSecret,
@@ -26,5 +27,6 @@ module.exports = {
   fromPhone,
   fromEmail,
   port,
-  dbUrl
+  dbUrl,
+  pay_enum
 }

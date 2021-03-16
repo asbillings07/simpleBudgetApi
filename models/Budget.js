@@ -1,18 +1,17 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const { pay_enum } = require('../config')
 
 const budgetSchema = new Schema(
     {
-        type: { type: String, required: true },
-        payFrequency: { type: String, required: true },
-        email: { type: String, required: true, unique: true },
-        password: { type: String, required: true },
+        type: { type: String, enum: pay_enum, required: true, default: 'weekly' },
+        salary: { type: Number, required: true }
     },
     {
         timestamps: true
     }
 )
 
-const Budget = mongoose.model('User', budgetSchema)
+const Budget = mongoose.model('Budget', budgetSchema)
 
 module.exports = Budget

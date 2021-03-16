@@ -4,9 +4,9 @@ const { dbUrl } = require('./config')
 
 // Models
 
-const Speaker = require('./models/Speaker')
-const TalkCoodinator = require('./models/TalkCoordinator')
-const Congregation = require('./models/Congregation')
+const Bill = require('./models/Bill')
+const Budget = require('./models/Budget')
+const User = require('./models/User')
 
 module.exports = (config) => {
   const options = {

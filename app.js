@@ -1,9 +1,9 @@
-const express = require('express')
+// const express = require('express')
 const { port, sessionSecret } = require('./config')
 const { ApolloServer } = require('apollo-server')
 const typeDefs = require('./graphQl/schema')
 const resolvers = require('./graphQl/resolvers')
-const models = require('./models')
+const { User, Bill, Budget } = require('./models')
 require('dotenv').config()
 // const bodyParser = require('body-parser')
 // var cookieParser = require('cookie-parser')
@@ -18,7 +18,7 @@ const { logger } = require('./logger')
 require('./mongoose')(config)
 
 
-const context = () => ({ models })
+const context = () => ({ models: { User, Bill, Budget } })
 
 const server = new ApolloServer({
   typeDefs,
@@ -27,7 +27,7 @@ const server = new ApolloServer({
 })
 
 
-server.listen().then(({ url }) => console.log(`Server Ready at ${url}`))
+server.listen(port).then(() => console.log(`Server Ready at ${port}`))
 
 
 
