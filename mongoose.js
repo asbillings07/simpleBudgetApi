@@ -14,6 +14,7 @@ module.exports = (config) => {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
     promiseLibrary: global.Promise
   }
 

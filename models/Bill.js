@@ -9,6 +9,10 @@ const billSchema = new Schema(
         amount: { type: Number, required: true },
         frequency: { type: String, enum: pay_enum, required: true, default: 'weekly' },
         dueDate: { type: Date, required: true },
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
     },
     {
         timestamps: true
