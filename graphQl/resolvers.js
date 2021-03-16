@@ -1,4 +1,3 @@
-const { models } = require('mongoose')
 
 module.exports = {
     Query: {
@@ -12,7 +11,26 @@ module.exports = {
             return models.Budget.find(input)
         }
     },
-    // Mutation: {
+    Mutation: {
+        async createUser (_, { input }, { models }) {
+            // will need to hash passwords before creation
+            return await models.User.create(input)
+        },
+        async createBill (_, { input }, { models }) {
+            return await models.Bill.create(input)
+        },
+        async createBudget (_, { input }, { models }) {
+            return await models.Budget.create(input)
+        },
+        async deleteBudget (_, { input }, { models }) {
+            return await models.Budget.findByIdAndRemove({ _id: input.id })
+        }
+    },
+    User: {
 
-    // }
+    },
+    Budget: {
+
+    }
+
 }

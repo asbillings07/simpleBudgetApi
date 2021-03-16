@@ -15,6 +15,7 @@ enum FrequencyType {
 input NewBillInput {
     name: String!
     amount: Int!
+    userId: ID!
     frequency: FrequencyType!
     dueDate: String!
 }
@@ -31,12 +32,15 @@ input BillInput {
 }
 
 input NewBudgetInput {
-    type: String!
+    userId: ID!
+    name: String!
+    type: FrequencyType!
     salary: Int!
 }
 
 input BudgetInput {
-    type: String
+    type: FrequencyType
+    name: String
     salary: Int
 }
 
@@ -44,14 +48,13 @@ input NewUserInput {
     firstName: String!
     lastName: String!
     email: String!
-    payFrequency: FrequencyType!
+    password: String!
 }
 
 input UserInput {
     firstName: String
     lastName: String
     email: String
-    payFrequency: FrequencyType
 }
 
 # Types
@@ -61,11 +64,12 @@ type User {
     firstName: String!
     lastName: String!
     email: String!
-    payFrequency: FrequencyType!
+    budgets: [Budget]!
 }
 
 type Bill {
     id: ID!
+    userId: ID!
     name: String!
     amount: Int!
     frequency: FrequencyType!
@@ -74,14 +78,17 @@ type Bill {
 
 type Budget {
     id: ID!
-    type: String!
+    name: String
+    userId: ID
+    type: FrequencyType!
     salary: Int!
+    bills: [Bill]!
 }
 
 type Query {
-    users(input: UserInput): [User]!
-    bills(input: BillInput): [Bill]!
-    budgets(input: BudgetInput): [Budget]!
+    users(input: UserInput!): [User]!
+    bills(input: BillInput!): [Bill]!
+    budgets(input: BudgetInput!): [Budget]!
 }
 
 
@@ -89,12 +96,12 @@ type Mutation {
     createBill(input: NewBillInput!): Bill!
     createBudget(input: NewBudgetInput!): Budget!
     createUser(input: NewUserInput!): User!
-    updateBill(input: BillInput): Bill
-    updateBudget(input: BudgetInput): Budget!
-    updateUser(input: UserInput): User
-    deleteBill(input: DeleteInput): Bill
-    deleteBudget(input: DeleteInput): Budget
-    deleteUser(input: DeleteInput): User
+    updateBill(input: BillInput!): Bill
+    updateBudget(input: BudgetInput!): Budget!
+    updateUser(input: UserInput!): User
+    deleteBill(input: DeleteInput!): Bill
+    deleteBudget(input: DeleteInput!): Budget
+    deleteUser(input: DeleteInput!): User
 }
 
 `
